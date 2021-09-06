@@ -1,17 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+function Calculator ()  {
+    const num1 = useInput("");
+    const num2 = useInput("");
+
+
+    return (
+        <div>
+            <h1> I am programming!!!</h1>
+            <h1> Hello World!!</h1>
+            <h1> The best calculator</h1>
+            <div >
+                <input type="text" {...num1}></input>
+                <h3 style={{display: 'inline',}}>+</h3>
+                <input type="text" {...num2}></input> 
+            </div>
+            <br />
+            <h1 style={{display: 'inline',}}> Result </h1>
+            <input type="text" value= {num1.value + num2.value} />
+        </div>
+    )
+}
+
+function useInput(initialValue) {
+    const [value, setValue] = useState(initialValue);
+
+    function handleChange (e) {
+        setValue(e.target.value);
+    }
+
+    return {
+        value: value,
+        onChange: handleChange,
+    }
+}
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <div> 
+        <Calculator />
+    </div>,
+    document.getElementById('root')
+)
